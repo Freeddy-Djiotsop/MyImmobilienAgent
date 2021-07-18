@@ -24,16 +24,16 @@ Sie können auch ihrem Server aktualisieren um die Werte zu sehen.
 
 Wenn Sie alle Schritte gefolgt haben, können Sie Jetzt die Webseiten laufen lassen: php -S 127.0.0.1:8000 -t public
 
-Property:
-	title
-	description
-	image
-	price
-	surface
-	floor
-	rooms
-	badrooms
-	city
-	plz
-	street
-	hnr
+Property(
+	title,
+	description,
+	image,
+	price,
+	surface,
+	floor,
+	rooms,
+	badrooms,
+	city,
+	plz,
+	street,
+	hnr)
