@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Verkaufen{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h2 class="text-center mt-4 mb-4"> {% if title2 is defined %} {{title2}} {% else %} Unsere Immobileien {% endif %} </h2>
+        <div class="row flex">
+            {% for p in properties %}
+                <div class="col-3 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{p.title}}</h5>
+                            <img class="card-img-top" src="{{p.image}}" alt="{{p.title}}">
+                            <p class=card-text> {{p.city}}, {{p.plz}} </p>
+                            <div class="text-primary" style="font-weight: bold; font-size: 1.5rem;"> {{p.formattedPrice}} €</div>
+                            <a href="{% if p.sold == false %} {{ path('sell.sell', {p,slug: p.getSlug, id: p.id}) }} {% else %} # {% endif %}" class="btn btn-{% if p.sold == false %}primary {% else %}secondary {% endif %}">
+                                {% if p.sold == false %}Verkaufen {% else %}schon verkauft {% endif %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

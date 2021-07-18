@@ -1,0 +1,42 @@
+{% extends "base.html.twig" %}
+{% block title %}
+    {% if title is defined %} 
+        {{title}}
+    {% else %}
+        all
+    {% endif %}
+
+{% endblock %}
+  
+{% block body %}
+    
+    <div class="text-center bg-dark text-light">
+        {% if home is defined%}
+            <h1>Immoblien Haus</h1>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+        {% endif %}
+    </div>
+
+    <div class="container">
+        <h2 class="text-center mt-4 mb-4"> {% if title2 is defined %} {{title2}} {% else %} Unsere Immobilien {% endif %} </h2>
+        <div class="row flex">
+            {% for p in properties %}
+                <div class="col-3 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="{{ path('property.index', {slug: p.getSlug, id: p.id}) }}">{{p.title}}</a>
+                            </h5>
+                            <img class="card-img-top" src="{{p.image}}" alt="{{p.title}}">
+                            <p class=card-text> {{p.city}}, {{p.plz}} </p>
+                            <div class="text-{% if p.sold == false %}primary {% else %}secondary {% endif %}" style="font-weight: bold; font-size: 1.5rem;"> {{p.formattedPrice}} €</div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <br>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+    </div>
+    
+{% endblock %}

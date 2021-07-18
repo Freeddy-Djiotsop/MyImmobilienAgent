@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title property.title %}
+
+{% block body %}
+
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row mb-6">
+                <div class="col-md-8"></div>
+                <div class="col-md-4">
+                    <h1>{{property.title }}</h1>
+                    <h2>{{property.surface}} qm</h2>
+                    <div class="text-primary" style="font-size: 2rem; font-weight: bold;"> {{property.formattedPrice}} €</div>
+                    <a href="{% if property.sold == false %} {{ path('buy.index') }} {% else %} # {% endif %}" class="btn btn-{% if property.sold == false %}primary {% else %}secondary {% endif %}">
+                        {% if property.sold == false %}Kaufen {% else %}schon gekauft {% endif %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container"> 
+        <div class="text-secondary" style="font-weight: bold;"> <u>Beschreibung :</u></div>
+        <p class="text-center">
+            {{property.description | nl2br }}
+        </p>
+    </div>
+
+    <div class="container">
+        <div class="img-fluid">
+            <img src="{{property.image}}" alt="{{property.title}}"/>
+        </div>
+        <div class="content">
+            <p class="date">
+                Hinzugefügt am {{property.createdAt | date("m/d/Y")}} um {{property.createdAt | date("H:i")}}
+            </p>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="text-success" style="font-weight: bold;"> Details</div>
+                <table class="table table-striped">
+                    <tr>
+                        <td>Name</td>
+                        <td>{{property.title}}</td>
+                    </tr>
+                    <tr>
+                        <td>Wohnfläche</td>
+                        <td>{{property.surface}} qm</td>
+                    </tr>
+                    <tr>
+                        <td>Etage</td>
+                        <td>{{property.floor}}</td>
+                    </tr>
+                    <tr>
+                        <td>Zimmer</td>
+                        <td>{{property.rooms}}</td>
+                    </tr>
+                    <tr>
+                        <td>Badezimmer</td>
+                        <td>{{property.badrooms}}</td>
+                    </tr>
+                    <tr>
+                        <td>Price</td>
+                        <td>{{property.formattedPrice}} €</td>
+                    </tr>
+                    <tr>
+                        <td>Stadt</td>
+                        <td>{{property.city}}</td>
+                    </tr>
+                    <tr>
+                        <td>PLZ</td>
+                        <td>{{property.plz}}</td>
+                    </tr>
+                    <tr>
+                        <td>Straße</td>
+                        <td>{{property.street}}</td>
+                    </tr>
+                    <tr>
+                        <td>Hausnummer</td>
+                        <td>{{property.hnr}}</td>
+                    </tr>
+                </table>
+            <div>
+            <div class="col-md-4"><div>
+        <div>
+    </div
+{% endblock %}
